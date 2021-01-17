@@ -25,20 +25,29 @@ export default {
     }
   },
   methods: {
-    handelLogin () {
+    async handelLogin () {
       // 希望让异步代码看起来像同步代码
       // ES7 async+await
-      this.$http
-        .post('login', this.formData)
-        .then((res) => {
-          const {meta} = res.data
+      const res = await this.$http.post('login', this.formData)
+      const {meta} = res.data
           if (meta.status === 200) {
             this.$message.success('登录成功！')
             this.$router.push({name: 'home'})
           } else {
             this.$message.error(meta.msg)
           }
-        })
+        }
+      // this.$http
+      //   .post('login', this.formData)
+      //   .then((res) => {
+      //     const {meta} = res.data
+      //     if (meta.status === 200) {
+      //       this.$message.success('登录成功！')
+      //       this.$router.push({name: 'home'})
+      //     } else {
+      //       this.$message.error(meta.msg)
+      //     }
+      //   })
     }
   }
 }
