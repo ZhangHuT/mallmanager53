@@ -29,26 +29,28 @@ export default {
       // 希望让异步代码看起来像同步代码
       // ES7 async+await
       const res = await this.$http.post('login', this.formData)
-      const {meta} = res.data
-          if (meta.status === 200) {
-            this.$message.success('登录成功！')
-            this.$router.push({name: 'home'})
-          } else {
-            this.$message.error(meta.msg)
-          }
-        }
-      // this.$http
-      //   .post('login', this.formData)
-      //   .then((res) => {
-      //     const {meta} = res.data
-      //     if (meta.status === 200) {
-      //       this.$message.success('登录成功！')
-      //       this.$router.push({name: 'home'})
-      //     } else {
-      //       this.$message.error(meta.msg)
-      //     }
-      //   })
+      const {data,meta} = res.data
+      if (meta.status === 200) {
+        console.log(res)
+        // 登录成功时，保存token的值
+        localStorage.setItem('token', data.token)
+        this.$router.push({name: 'home'})
+        this.$message.success('登录成功！')
+      } else {
+        this.$message.error(meta.msg)
+      }
     }
+    // this.$http
+    //   .post('login', this.formData)
+    //   .then((res) => {
+    //     const {meta} = res.data
+    //     if (meta.status === 200) {
+    //       this.$message.success('登录成功！')
+    //       this.$router.push({name: 'home'})
+    //     } else {
+    //       this.$message.error(meta.msg)
+    //     }
+    //   })
   }
 }
 </script>
