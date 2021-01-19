@@ -5,7 +5,7 @@
       <!--表格-->
       <el-table
         :data="powerData"
-        height="400"
+        height="610"
         border
         style="width: 100%" class="roleRow">
         <el-table-column
@@ -47,10 +47,6 @@
     },
     methods: {
       async getPowerDate () {
-        // 除了登录的设置，其他的都需要进行表头的设置
-        const AUTH_TOKEN = localStorage.getItem('token')
-        this.$http.defaults.headers.common['Authorization'] = AUTH_TOKEN
-
         const  res = await this.$http.get(`rights/list`)
         console.log(res)
         const {data} = res.data
