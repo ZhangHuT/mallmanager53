@@ -29,7 +29,7 @@ export default {
       // 希望让异步代码看起来像同步代码
       // ES7 async+await
       const res = await this.$http.post('login', this.formData)
-      const {data,meta} = res.data
+      const {data, meta} = res.data
       if (meta.status === 200) {
         console.log(res)
         // 登录成功时，保存token的值
