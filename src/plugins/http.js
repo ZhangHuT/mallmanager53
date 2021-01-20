@@ -8,7 +8,8 @@ MyServerHttp.install = function (Vue, options) {
     console.log(config)
     if (config.url !== 'login') {
       const AUTH_TOKEN = localStorage.getItem('token')
-      axios.headers = AUTH_TOKEN
+      // config中
+      config.headers.Authorization = AUTH_TOKEN
     }
     return config;
   }, function (error) {

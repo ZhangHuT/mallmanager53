@@ -321,6 +321,7 @@ export default {
       // this.$http.defaults.headers.common['Authorization'] = AUTH_TOKEN
       // eslint-disable-next-line no-template-curly-in-string,no-useless-escape
       const res = await this.$http.get(`users?query=${this.query}&pagenum=${this.pagenum}&pagesize=${this.pagesize}`)
+      console.log(res)
       const {
         data: {total, pagenum, users},
         meta: {msg, status}
