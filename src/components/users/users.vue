@@ -15,7 +15,7 @@
           <el-button slot="append" @click="queryUser()" icon="el-icon-search"></el-button>
         </el-input>
         <el-button @click="showAddUser()" type="success">添加用户</el-button>
-  <!--         添加用户的组件-->
+    <!-- 添加用户的组件-->
         <el-dialog title="添加用户" :visible.sync="dialogFormVisibleAdd">
           <el-form :model="user" :rules="rules" ref="user">
             <el-form-item prop="username" label="用户名称" :label-width="formLabelWidth">
